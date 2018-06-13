@@ -26,7 +26,7 @@ function getToken(options, callback) {
 
     requestWithDefaults(requestOptions, (err, resp, body) => {
         if (err || resp.statusCode != 200) {
-            callback(err || new Error(`response status: ${resp.statusCode}`));
+            callback(err || { err: `response status: ${resp.statusCode}` });
             return;
         }
 
@@ -96,7 +96,7 @@ function doLookup(entities, options, callback) {
 
                         requestWithDefaults(requestOptions, (err, resp, body) => {
                             if (err || resp.statusCode != 200) {
-                                callback(err || new Error(`http response code: ${resp.statusCode}`));
+                                callback(err || { err: `http response code: ${resp.statusCode}` });
                                 return;
                             }
 
